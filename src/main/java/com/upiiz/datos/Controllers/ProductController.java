@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class ProductController {
 
-    @GetMapping("/products")
+    @GetMapping()
     public String index() {
         return "listado-productos";
     }
