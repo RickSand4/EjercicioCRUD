@@ -1,13 +1,16 @@
 package com.upiiz.datos.Repositories;
 
-import javax.swing.*;
+import com.upiiz.datos.Models.CommentModel;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+
+@Repository
 public interface CommentRepository {
-    //Menu de lo que puedo pedir
-
-    //puedo pedir todos los comentarios
-    //puedo pedir un comentario
-    //puedo agregar un comentario
-    //puedo actualizar un comentario
-    //puedo eliminar un comentario
+    List<CommentModel> findAll();
+    CommentModel findByID(long id);
+    void save(CommentModel comment);
+    void delete(int id);
+    void update(CommentModel comment);
 }

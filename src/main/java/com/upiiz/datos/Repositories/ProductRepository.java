@@ -3,6 +3,8 @@ package com.upiiz.datos.Repositories;
 import com.upiiz.datos.Models.ProductModel;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 
 public interface ProductRepository {
@@ -17,5 +19,5 @@ public interface ProductRepository {
     //actualizar un producto
     void update(ProductModel product);
     //eliminar un producto por su id
-    void delete(ProductModel product);
+    void delete(int id);
 }
