@@ -768,6 +768,11 @@
                                         </tfoot>
                                         <tbody>
                                         <tr th:each="producto : ${productos}">
+                                            <td th:text="${producto.getId()}"></td>
+                                            <td th:text="${producto.getName()}"></td>
+                                            <td th:text="${producto.getPrice()}"></td>
+                                            <td th:if="${producto.isInStock()}">En existencia</td>
+                                            <td th:unless="${producto.isInStock()}">Agotados</td>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
