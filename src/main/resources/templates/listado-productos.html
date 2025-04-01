@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>AdminStore -Listado Productos</title>
@@ -767,6 +767,7 @@
                                         </tr>
                                         </tfoot>
                                         <tbody>
+                                        <tr th:each="producto : ${productos}">
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
