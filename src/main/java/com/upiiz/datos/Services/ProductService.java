@@ -12,58 +12,33 @@ import java.util.Optional;
 
 @Service
 public class ProductService implements ProductRepository {
-
-    private final JdbcTemplate jdbcTemplate;
-
+//Inyectar la dependencia
     @Autowired
-    public ProductService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
+    private JdbcTemplate jdbcTemplate;
+    //conectar a la base de datos
     @Override
     public List<ProductModel> findAll() {
-        String sql = "SELECT * FROM Product"; // Cambiado a "Product" (nombre de tabla según tu esquema SQL)
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ProductModel.class));
+        return jdbcTemplate.query("SELECT * FROM product", new BeanPropertyRowMapper<>(ProductModel.class));
     }
 
     @Override
-    public Optional<ProductModel> findById(int id) {
-        String sql = "SELECT * FROM Product WHERE id = ?";
-        try {
-            ProductModel product = jdbcTemplate.queryForObject(
-                    sql,
-                    new Object[]{id},
-                    new BeanPropertyRowMapper<>(ProductModel.class));
-            return Optional.ofNullable(product);
-        } catch (Exception e) {
-            return Optional.empty();
-        }
+    public ProductModel findById(int id) {
+        return null;
     }
 
     @Override
-    public int save(ProductModel product) {
-        String sql = "INSERT INTO Product (name, price, in_stock) VALUES (?, ?, ?)";
-        return jdbcTemplate.update(
-                sql,
-                product.getName(),
-                product.getPrice(),
-                product.isInStock());
+    public void save(ProductModel product) {
+
     }
 
     @Override
-    public int update(ProductModel product) {
-        String sql = "UPDATE Product SET name = ?, price = ?, in_stock = ? WHERE id = ?";
-        return jdbcTemplate.update(
-                sql,
-                product.getName(),
-                product.getPrice(),
-                product.isInStock(),
-                product.getId());
+    public void update(ProductModel product) {
+
     }
 
     @Override
-    public int delete(int id) {
-        String sql = "DELETE FROM Product WHERE id = ?";
-        return jdbcTemplate.update(sql, id);
+    public void delete(int id) {
+
     }
+
 }
