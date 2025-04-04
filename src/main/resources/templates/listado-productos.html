@@ -739,12 +739,14 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Listado</h4>
-                                <button class="btn btn-success">
+                                <a th:href="@{/products/new}">
+                                    <button class="btn btn-success">
                         <span class="btn-label">
                           <i class="fa fa-plus"></i>
                         </span>
-                                    Agregar producto
-                                </button>
+                                        Agregar producto
+                                    </button>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -799,7 +801,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a th:href="@{/delete/{id}(id=${producto.getId()})}">
+                                                <a th:href="@{products/delete/{id}(id=${producto.getId()})}">
                                                     <button class="btn btn-danger">
                                             <span class="btn-label">
                                             <i class="fa fa-archive"></i>
