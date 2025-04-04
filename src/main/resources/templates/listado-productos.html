@@ -789,6 +789,16 @@
                                                 </a>
                                             </td>
                                             <td>
+                                                <a th:href="@{/products/edit/{id}(id=${producto.getId()})}">
+                                                    <button class="btn btn-info">
+                                                <span class="btn-label">
+                                                  <i class="fa fa-info"></i>
+                                                </span>
+                                                        Editar
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
                                                 <a th:href="@{/delete/{id}(id=${producto.getId()})}">
                                                     <button class="btn btn-danger">
                                             <span class="btn-label">
@@ -798,16 +808,6 @@
                                                     </button>
                                                 </a>
 
-                                            </td>
-                                            <td>
-                                                <a th:href="@{/products/edit/{id}(id=${producto.getId()})}">
-                                                    <button class="btn btn-info">
-                                                <span class="btn-label">
-                                                  <i class="fa fa-info"></i>
-                                                </span>
-                                                        Editar
-                                                    </button>
-                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>
