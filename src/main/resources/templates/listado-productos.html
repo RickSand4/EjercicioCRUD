@@ -780,28 +780,34 @@
                                             <td th:if="${producto.isInStock()}">En existencia</td>
                                             <td th:unless="${producto.isInStock()}">Agotados</td>
                                             <td>
-                                            <button
-                                                    type="button"
-                                                    class="btn btn-icon btn-round btn-black"
-                                            >
-                                                <i class="fa fa-align-left"></i>
-                                            </button>
+                                                <a th:href="@{/comentarios/{id}(id=${producto.getId()})}">
+                                                    <button
+                                                            type="button"
+                                                            class="btn btn-icon btn-round btn-black">
+                                                        <i class="fa fa-align-left"></i>
+                                                    </button>
+                                                </a>
                                             </td>
                                             <td>
-                                            <button class="btn btn-danger">
+                                                <a th:href="@{/delete/{id}(id=${producto.getId()})}">
+                                                    <button class="btn btn-danger">
                                             <span class="btn-label">
                                             <i class="fa fa-archive"></i>
                                             </span>
-                                                Eliminar
-                                            </button>
+                                                        Eliminar
+                                                    </button>
+                                                </a>
+
                                             </td>
                                             <td>
-                                                <button class="btn btn-info">
+                                                <a th:href="@{/products/edit/{id}(id=${producto.getId()})}">
+                                                    <button class="btn btn-info">
                                                 <span class="btn-label">
                                                   <i class="fa fa-info"></i>
                                                 </span>
-                                                    Editar
-                                                </button>
+                                                        Editar
+                                                    </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>
