@@ -23,7 +23,9 @@ public class ProductService implements ProductRepository {
 
     @Override
     public ProductModel findById(int id) {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM product WHERE id=?",
+                new BeanPropertyRowMapper<>(ProductModel.class),id)
+                .stream().findFirst().orElse(new ProductModel());
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ProductService implements ProductRepository {
 
     @Override
     public void delete(int id) {
-
+    jdbcTemplate.update("DELETE FROM product WHERE id=?",id);
     }
 
 }
