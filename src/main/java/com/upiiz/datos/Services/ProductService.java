@@ -27,8 +27,8 @@ public class ProductService implements ProductRepository {
     }
 
     @Override
-    public void save(ProductModel product) {
-
+    public void save(@org.jetbrains.annotations.NotNull ProductModel product) {
+        jdbcTemplate.update("INSERT INTO product(name,price,in_stock) VALUES(?,?,?)",product.getName(), product.getPrice(),product.isInStock());
     }
 
     @Override

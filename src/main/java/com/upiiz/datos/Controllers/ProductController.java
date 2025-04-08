@@ -6,6 +6,8 @@ import com.upiiz.datos.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
@@ -23,6 +25,13 @@ public class ProductController {
 
     @GetMapping("/products/new")
     public String newProduct(Model model) {
+        ProductModel producto = new ProductModel();
+        model.addAttribute("producto", producto);
         return "agregar-productos";
+    }
+    @PostMapping("/products/guardar")
+    public String guardarProducto(ProductModel producto) {
+        productService.save(producto);
+        return "redirect:/products";
     }
 }
