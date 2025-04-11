@@ -29,15 +29,17 @@ public class ProductService implements ProductRepository {
     }
 
     @Override
-    public void save(@org.jetbrains.annotations.NotNull ProductModel product) {
+    public void save( ProductModel product) {
         jdbcTemplate.update("INSERT INTO product(name,price,in_stock) VALUES(?,?,?)",product.getName(), product.getPrice(),product.isInStock());
     }
 
     @Override
     public void update(ProductModel product) {
-
+        jdbcTemplate.update(
+                "UPDATE product SET name =?, price =?, in_stock =? WHERE id=?",
+                product.getName(),product.getPrice(), product.isInStock(), product.getId()
+        );
     }
-
     @Override
     public void delete(int id) {
     jdbcTemplate.update("DELETE FROM product WHERE id=?",id);
