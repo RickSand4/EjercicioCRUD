@@ -3,7 +3,9 @@ package com.upiiz.datos.Services;
 
 import com.upiiz.datos.Models.CommentModel;
 import com.upiiz.datos.Repositories.CommentRepository;
-import com.upiiz.datos.Repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,9 @@ import java.util.List;
 //extend    - Herencia
 @Service
 public class CommentService implements CommentRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<CommentModel> findAll() {
@@ -38,4 +43,16 @@ public class CommentService implements CommentRepository {
     public void update(CommentModel comment) {
 
     }
+
+    @Override
+    public void deleteByid(int id) {
+
+    }
+
+    @Override
+    public List<CommentModel> findCommentsProductByid(int product_id) {
+
+        return jdbcTemplate.query("SELECT * FROM comments WHERE id_product = ?", new BeanPropertyRowMapper<>(CommentModel.class), product_id);
+    }
+
 }

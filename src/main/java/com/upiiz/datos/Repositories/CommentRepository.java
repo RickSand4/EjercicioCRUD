@@ -13,4 +13,6 @@ public interface CommentRepository {
     void save(CommentModel comment);
     void delete(int id);
     void update(CommentModel comment);
+    void deleteByid(int id);
+    List<CommentModel>findCommentsProductByid(int product_id);
 }
