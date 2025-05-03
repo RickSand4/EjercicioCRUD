@@ -52,7 +52,7 @@ public class CommentService implements CommentRepository {
     @Override
     public List<CommentModel> findCommentsProductByid(int product_id) {
 
-        return jdbcTemplate.query("SELECT * FROM comments WHERE id_product = ?", new BeanPropertyRowMapper<>(CommentModel.class), product_id);
+        return jdbcTemplate.query("SELECT * FROM comment WHERE product_id = ?",new BeanPropertyRowMapper<>(CommentModel.class),product_id);
     }
 
 }

@@ -3,15 +3,23 @@ package com.upiiz.datos.Models;
 public class CommentModel {
     private int id;
     private String text;
-    private int product_id;
+    private int idProduct;
 
-    public CommentModel(int id, String text, int product_id) {
+    public CommentModel(int id, String text, int idProduct) {
         this.id = id;
         this.text = text;
-        this.product_id = product_id;
+        this.idProduct = idProduct;
     }
-    public CommentModel() {
+    public CommentModel(){
 
+    }
+
+    public int getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
     public int getId() {
@@ -29,8 +37,4 @@ public class CommentModel {
     public void setText(String text) {
         this.text = text;
     }
-    public int getProduct_id() {return product_id;}
-
-    public void setProduct_id(int product_id) {this.product_id = product_id;}
-
 }
