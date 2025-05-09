@@ -18,31 +18,31 @@ public class ProductService implements ProductRepository {
     //conectar a la base de datos
     @Override
     public List<ProductModel> findAll() {
-        return jdbcTemplate.query("SELECT * FROM product", new BeanPropertyRowMapper<>(ProductModel.class));
+        return jdbcTemplate.query("SELECT * FROM Product", new BeanPropertyRowMapper<>(ProductModel.class));
     }
 
     @Override
     public ProductModel findById(int id) {
-        return jdbcTemplate.query("SELECT * FROM product WHERE id=?",
+        return jdbcTemplate.query("SELECT * FROM Product WHERE id=?",
                 new BeanPropertyRowMapper<>(ProductModel.class),id)
                 .stream().findFirst().orElse(new ProductModel());
     }
 
     @Override
     public void save( ProductModel product) {
-        jdbcTemplate.update("INSERT INTO product(name,price,in_stock) VALUES(?,?,?)",product.getName(), product.getPrice(),product.isInStock());
+        jdbcTemplate.update("INSERT INTO Product(name,price,in_stock) VALUES(?,?,?)",product.getName(), product.getPrice(),product.isInStock());
     }
 
     @Override
     public void update(ProductModel product) {
         jdbcTemplate.update(
-                "UPDATE product SET name =?, price =?, in_stock =? WHERE id=?",
+                "UPDATE Product SET name =?, price =?, in_stock =? WHERE id=?",
                 product.getName(),product.getPrice(), product.isInStock(), product.getId()
         );
     }
     @Override
     public void delete(int id) {
-    jdbcTemplate.update("DELETE FROM product WHERE id=?",id);
+    jdbcTemplate.update("DELETE FROM Product WHERE id=?",id);
     }
 
 }
